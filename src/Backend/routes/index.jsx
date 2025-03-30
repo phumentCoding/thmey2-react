@@ -28,7 +28,7 @@ const BackRoute = () => {
           <Route path="/news/list" element={<List />} />
           <Route path="/news/create" element={<Create />} />
           <Route path="/news/edit" element={<Edit />} />
-          <Route path="/user/list" element={<UserList />} />
+          <Route path="/user" element={<UserList />} />
           <Route path="/user/create" element={<UserCreate />} />
           <Route path="/user/edit" element={<UserEdit />} />
           <Route path="/type/list" element={<TypeList />} />

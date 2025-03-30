@@ -1,17 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { PencilIcon, TrashIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const UserList = () => {
   const users = [
-    { id: 1, name: 'John Doe', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdibDVxDer6htB4nmqh3gDgkkwo4b6281zeg&s', email: 'john@example.com', role: 'Admin' },
-    { id: 2, name: 'Jane Smith', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdibDVxDer6htB4nmqh3gDgkkwo4b6281zeg&s', email: 'jane@example.com', role: 'Editor' },
-    { id: 3, name: 'Michael Brown', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdibDVxDer6htB4nmqh3gDgkkwo4b6281zeg&s', email: 'michael@example.com', role: 'User' },
-    { id: 4, name: 'Sarah Williams', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdibDVxDer6htB4nmqh3gDgkkwo4b6281zeg&s', email: 'sarah@example.com', role: 'Admin' },
-    { id: 5, name: 'David Lee', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdibDVxDer6htB4nmqh3gDgkkwo4b6281zeg&s', email: 'david@example.com', role: 'Editor' },
-    { id: 6, name: 'Emma Green', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdibDVxDer6htB4nmqh3gDgkkwo4b6281zeg&s', email: 'emma@example.com', role: 'User' },
-    { id: 7, name: 'James White', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdibDVxDer6htB4nmqh3gDgkkwo4b6281zeg&s', email: 'james@example.com', role: 'Admin' },
-    { id: 8, name: 'Olivia Martin', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdibDVxDer6htB4nmqh3gDgkkwo4b6281zeg&s', email: 'olivia@example.com', role: 'Editor' },
-    { id: 9, name: 'Isabella Davis', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdibDVxDer6htB4nmqh3gDgkkwo4b6281zeg&s', email: 'isabella@example.com', role: 'User' },
-    { id: 10, name: 'Ethan Clark', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdibDVxDer6htB4nmqh3gDgkkwo4b6281zeg&s', email: 'ethan@example.com', role: 'Admin' },
+    { id: 1, name: "John Doe", image: "https://via.placeholder.com/150", email: "john@example.com", role: "Admin" },
+    { id: 2, name: "Jane Smith", image: "https://via.placeholder.com/150", email: "jane@example.com", role: "Editor" },
+    { id: 3, name: "Michael Brown", image: "https://via.placeholder.com/150", email: "michael@example.com", role: "User" },
   ];
 
   const usersPerPage = 5;
@@ -28,45 +22,41 @@ const UserList = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-gradient-to-r from-blue-500 via-green-500 to-purple-500">
-      <div>
-        <h2 className="text-2xl font-semibold mb-4 text-white">User List</h2>
-        <a href="/admin/user/create" className="text-blue-500 hover:text-blue-700 mb-4 inline-block">
-          Add New User
+    <div className="container mx-auto p-6">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-semibold">User List</h2>
+        <a href="/admin/user/create" className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700">
+          <PlusIcon className="h-5 w-5 mr-2" /> Add New User
         </a>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full bg-white border border-gray-200 rounded-lg shadow-md">
+        <table className="w-full border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-600">
           <thead>
-            <tr className="bg-gray-100">
-              <th className="px-4 py-2 border">ID</th>
-              <th className="px-4 py-2 border">Name</th>
-              <th className="px-4 py-2 border">Image</th>
-              <th className="px-4 py-2 border">Email</th>
-              <th className="px-4 py-2 border">Role</th>
-              <th className="px-4 py-2 border">Action</th>
+            <tr className="bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300">
+              <th className="px-4 py-3 border dark:border-gray-600">ID</th>
+              <th className="px-4 py-3 border dark:border-gray-600">Name</th>
+              <th className="px-4 py-3 border dark:border-gray-600">Image</th>
+              <th className="px-4 py-3 border dark:border-gray-600">Email</th>
+              <th className="px-4 py-3 border dark:border-gray-600">Role</th>
+              <th className="px-4 py-3 border dark:border-gray-600">Action</th>
             </tr>
           </thead>
           <tbody>
             {currentUsers.map((user) => (
-              <tr key={user.id} className="hover:bg-gray-50">
-                <td className="px-4 py-2 border text-center">{user.id}</td>
-                <td className="px-4 py-2 border">{user.name}</td>
-                <td className="px-4 py-2 border text-center">
-                  <img
-                    src={user.image}
-                    alt={user.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
+              <tr key={user.id} className="hover:bg-gray-50 text-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
+                <td className="px-4 py-3 border text-center dark:border-gray-600">{user.id}</td>
+                <td className="px-4 py-3 border dark:border-gray-600">{user.name}</td>
+                <td className="px-4 py-3 border text-center dark:border-gray-600">
+                  <img src={user.image} alt={user.name} className="w-12 h-12 rounded-full object-cover" />
                 </td>
-                <td className="px-4 py-2 border">{user.email}</td>
-                <td className="px-4 py-2 border text-center">{user.role}</td>
-                <td className="px-4 py-2 border text-center">
-                  <a href='/admin/user/edit' className="px-3 py-1 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 mr-2">
-                    Edit
+                <td className="px-4 py-3 border dark:border-gray-600">{user.email}</td>
+                <td className="px-4 py-3 border text-center dark:border-gray-600">{user.role}</td>
+                <td className="px-4 py-3 border text-center flex justify-center space-x-2 dark:border-gray-600">
+                  <a href='/admin/user/edit' className="p-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">
+                    <PencilIcon className="h-5 w-5" />
                   </a>
-                  <button className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600">
-                    Delete
+                  <button className="p-2 bg-red-500 text-white rounded-md hover:bg-red-600">
+                    <TrashIcon className="h-5 w-5" />
                   </button>
                 </td>
               </tr>
@@ -76,18 +66,18 @@ const UserList = () => {
       </div>
 
       {/* Pagination Controls */}
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-6 space-x-2">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
-          className="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400 disabled:opacity-50"
+          className="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400 disabled:opacity-50 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
           disabled={currentPage === 1}
         >
           Previous
         </button>
-        <span className="mx-4 text-lg text-white">{currentPage} / {totalPages}</span>
+        <span className="px-4 py-2 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-white">{currentPage} / {totalPages}</span>
         <button
           onClick={() => handlePageChange(currentPage + 1)}
-          className="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400 disabled:opacity-50"
+          className="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400 disabled:opacity-50 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
           disabled={currentPage === totalPages}
         >
           Next

@@ -69,11 +69,11 @@ const MasterLayout = () => {
           <nav className="mt-6">
             {[
               { name: "Dashboard", path: "/admin", icon: HomeIcon },
+              { name: "User", path: "/admin/user", icon: FolderIcon },
               { name: "Category", path: "/admin/category", icon: UsersIcon },
-              { name: "Projects", path: "/projects", icon: FolderIcon },
-              { name: "Calendar", path: "/calendar", icon: CalendarIcon },
-              { name: "Reports", path: "/reports", icon: ChartBarIcon },
-              { name: "Authentication", path: "/auth", icon: ChartBarIcon },
+              { name: "Type", path: "/admin/type", icon: FolderIcon },
+              { name: "Post", path: "/admin/post", icon: CalendarIcon },
+              { name: "Setting", path: "/admin/setting", icon: ChartBarIcon },
             ].map((item) => (
               <NavLink
                 key={item.name}
